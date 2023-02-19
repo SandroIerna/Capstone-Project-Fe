@@ -13,7 +13,7 @@ The idea I got interested in for my capstone project is to make a web applicatio
 
 - If the user has already in mind a clear recipe, it will be possible to insert all the needed ingredients and the server will be looking for the stores that have them all in the catalog.
 
-- An added feature would be to be able to select a dish cathegory, getting a list of recipes, selecting one specific recipe and getting redirected to the closest grocery store with everything available in stock. 
+- An added feature would be to be able to select a dish category, getting a list of recipes, selecting one specific recipe and getting redirected to the closest grocery store with everything available in stock. 
 
 
 
