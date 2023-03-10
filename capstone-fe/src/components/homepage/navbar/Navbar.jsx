@@ -1,9 +1,11 @@
 import { Col, Container, Row, Button, Modal } from "react-bootstrap";
 import "./navbar.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -70,7 +72,13 @@ const Navbar = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              handleClose();
+              navigate("/users/register");
+            }}
+          >
             Save Changes
           </Button>
         </Modal.Footer>

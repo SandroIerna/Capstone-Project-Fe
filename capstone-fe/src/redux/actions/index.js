@@ -3,6 +3,7 @@ export const GET_USER = "GET_USER";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const GET_ITEMS = "GET_ITEMS";
 export const GET_STORES = "GET_STORES";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
 export const registerUser = (userData) => {
   return async (dispatch) => {
@@ -30,6 +31,12 @@ export const registerUser = (userData) => {
 export const addToCartAction = (item) => {
   return async (dispatch) => {
     dispatch({ type: ADD_TO_CART, payload: item });
+  };
+};
+
+export const removeFromCartAction = (item) => {
+  return async (dispatch) => {
+    dispatch({ type: REMOVE_FROM_CART, payload: item });
   };
 };
 

@@ -14,6 +14,7 @@ const Homepage = () => {
   const dispatch = useDispatch();
   const stores = useSelector((state) => state.stores.stores);
   const items = useSelector((state) => state.items.items);
+  const cart = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
     dispatch(getStoresAction());
