@@ -1,4 +1,41 @@
 .navbar-container {
   background-color: #e1efeb;
-  height: 180px;
+  height: 140px;
+}
+
+#search-bar {
+  height: 40px;
+  width: 50%;
+  border: none;
+  border-radius: 16px 0px 0px 16px;
+}
+
+#search-button {
+  border: none;
+  width: 15%;
+  border-radius: 0px 16px 16px 0px;
+  background-color: #b9e497;
+  text-align: center;
+  color: black;
+}
+
+#user-button {
+  background-color: #b9e497;
+  width: 50%;
+  border: none;
+  border-radius: 16px;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+}
+
+#navigation {
+  height: 40px;
+  border-radius: 16px;
+  background-color: #b9e497;
+}
+
+#cart-button {
+  height: 40px;
+  width: 100%;
 }
