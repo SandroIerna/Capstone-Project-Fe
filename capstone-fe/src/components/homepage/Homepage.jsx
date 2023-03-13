@@ -7,7 +7,7 @@ import {
 } from "../../redux/actions";
 import Navbar from "./navbar/Navbar";
 import Store from "./store/Store";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Button } from "react-bootstrap";
 import Item from "./item/Item";
 
 const Homepage = () => {
@@ -31,6 +31,9 @@ const Homepage = () => {
         <Row>
           {stores &&
             stores.map((store) => <Store key={store._id} storeData={store} />)}
+        </Row>
+        <Row className="d-flex justify-content-center">
+          <Button onClick={() => {}}>Search</Button>
         </Row>
       </Container>
 
