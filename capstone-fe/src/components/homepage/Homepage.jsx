@@ -33,12 +33,6 @@ const Homepage = () => {
         </Row>
         <Row className="d-flex justify-content-center"></Row>
       </Container>
-
-      {/* <Item
-        onclick={() => {
-          dispatch(addToCartAction(itemData));
-        }}
-      ></Item> */}
     </>
   );
 };

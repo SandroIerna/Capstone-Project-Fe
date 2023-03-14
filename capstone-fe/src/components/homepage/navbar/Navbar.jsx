@@ -2,19 +2,27 @@ import { Col, Container, Row, Button, Modal } from "react-bootstrap";
 import "./navbar.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { searchStoresAction } from "../../../redux/actions";
 
 const Navbar = () => {
   const [showUser, setShowUser] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const cart = useSelector((state) => state.cart.cart);
+  const cartItems = [];
   // const user = useSelector((state) => state.user.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleCloseCart = () => setShowCart(false);
   const handleShowCart = () => setShowCart(true);
   const handleCloseUser = () => setShowUser(false);
   const handleShowUser = () => setShowUser(true);
+  const handleSearchStores = () => {
+    cart.map((item) => cartItems.push(item._id));
+    console.log(cartItems);
+    dispatch(searchStoresAction(cartItems));
+  };
 
   return (
     <Container fluid className="navbar-container">
@@ -109,6 +117,7 @@ const Navbar = () => {
           <Button
             variant="primary"
             onClick={() => {
+              handleSearchStores();
               handleCloseCart();
             }}
           >

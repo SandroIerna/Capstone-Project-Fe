@@ -99,3 +99,24 @@ export const getStoresAction = () => {
     }
   };
 };
+
+export const searchStoresAction = (cartData) => {
+  return async (dispatch) => {
+    console.log("hi");
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+      },
+      body: JSON.stringify(cartData),
+    };
+    const URL = process.env.REACT_APP_BE_URL;
+
+    let response = await fetch(`${URL}/stores/cart`, options);
+    if (response.ok) {
+      const stores = await response.json();
+      console.log(stores);
+    }
+  };
+};
