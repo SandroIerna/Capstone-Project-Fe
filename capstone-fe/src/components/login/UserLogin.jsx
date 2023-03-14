@@ -1,11 +1,14 @@
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserLogin = () => {
+  const navigate = useNavigate();
+
   return (
     <Container fluid>
       {}
+      <Button onClick={() => navigate("/")}>Back To Home</Button>
       <Row>
         <Col sm={7} id="loginCard">
           <Row className="d-flex">

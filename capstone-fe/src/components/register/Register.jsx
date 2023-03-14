@@ -1,13 +1,16 @@
-import { Row, Col, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Row, Col, Container, Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/actions";
 
 const UserRegister = () => {
   const dispatch = useDispatch();
   const userData = { Name: "Sandro" };
+  const navigate = useNavigate();
+
   return (
     <Container fluid>
+      <Button onClick={() => navigate("/")}>Back To Home</Button>
       {}
       <Row>
         <Col sm={7} id="loginCard">
