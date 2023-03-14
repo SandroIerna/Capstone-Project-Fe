@@ -31,9 +31,7 @@ const Homepage = () => {
           {stores &&
             stores.map((store) => <Store key={store._id} storeData={store} />)}
         </Row>
-        <Row className="d-flex justify-content-center">
-          <Button onClick={() => {}}>Search</Button>
-        </Row>
+        <Row className="d-flex justify-content-center"></Row>
       </Container>
 
       {/* <Item

@@ -11,7 +11,14 @@ const Store = ({ storeData }) => {
         <Card.Body className="d-flex justify-content-between align-items-center">
           <div className="d-flex flex-column justify-content-center align-items-center">
             <Card.Title>{storeData.name}</Card.Title>
-            <Card.Text>{storeData.name}</Card.Text>
+            <Card.Text>
+              {""}
+              <span>
+                {storeData.owner.firstName}
+                {storeData.owner.lastName}
+              </span>
+              <span></span>
+            </Card.Text>
           </div>
           <Button
             variant="primary"

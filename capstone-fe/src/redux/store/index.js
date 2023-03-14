@@ -6,10 +6,10 @@ import {
 import localStorage from "redux-persist/es/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
-import registerUser from "../reducers/registerUser";
 import itemsReducer from "../reducers/itemsReducer";
 import cartReducer from "../reducers/cartReducer";
 import storesReducer from "../reducers/storesReducer";
+import userReducer from "../reducers/userReducer";
 
 const persistConfig = {
   key: "root",
@@ -21,7 +21,7 @@ const persistConfig = {
   ],
 };
 const bigReducer = combineReducers({
-  registerUser: registerUser,
+  user: userReducer,
   stores: storesReducer,
   items: itemsReducer,
   cart: cartReducer,

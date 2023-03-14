@@ -1,9 +1,29 @@
 import { Row, Col, Container, Button } from "react-bootstrap";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginUserAction } from "../../redux/actions";
 
 const UserLogin = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState("password");
+
+  const handleLogin = () => {
+    const loginData = { email, password };
+    dispatch(loginUserAction(loginData));
+  };
+
+  const handleShowPassword = () => {
+    if (showPassword === "password") {
+      setShowPassword("text");
+    } else {
+      setShowPassword("password");
+    }
+  };
 
   return (
     <Container fluid>
@@ -29,15 +49,21 @@ const UserLogin = () => {
                 <div className="input-field mt-5">
                   <input
                     type={"text"}
-                    placeholder="Username"
+                    placeholder="Email"
                     className="input-field"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                   ></input>
                 </div>
                 <div className="input-field mt-5 mb-5">
                   <input
-                    type={"text"}
+                    type={showPassword}
                     placeholder="Password"
                     className="input-field"
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
                   ></input>
                 </div>
               </Row>
@@ -47,7 +73,21 @@ const UserLogin = () => {
                     <u>Forgot password?</u>
                   </span>
                 </div>
-                <button className="login-button">Login</button>
+                <Button
+                  onClick={() => {
+                    handleShowPassword();
+                  }}
+                >
+                  Show psw
+                </Button>
+                <Button
+                  className="login-button"
+                  onClick={() => {
+                    handleLogin();
+                  }}
+                >
+                  Login
+                </Button>
               </Row>
             </Col>
             <Col sm={2}></Col>

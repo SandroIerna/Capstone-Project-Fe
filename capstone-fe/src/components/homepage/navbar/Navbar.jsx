@@ -84,7 +84,7 @@ const Navbar = () => {
             variant="primary"
             onClick={() => {
               handleCloseUser();
-              navigate("/users/register");
+              navigate("/users/login");
             }}
           >
             Save Changes
