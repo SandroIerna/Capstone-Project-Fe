@@ -5,6 +5,8 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const GET_ITEMS = "GET_ITEMS";
 export const GET_STORES = "GET_STORES";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const UPDATE_COUNT = "UPDATE_COUNT";
+export const GET_STORE = "GET_STORE";
 
 export const registerUserAction = (userData) => {
   return async (dispatch) => {
@@ -62,6 +64,12 @@ export const removeFromCartAction = (item) => {
   };
 };
 
+export const updateCountAction = (item) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_COUNT, payload: item });
+  };
+};
+
 export const getItemsAction = () => {
   return async (dispatch) => {
     const URL = process.env.REACT_APP_BE_URL;
@@ -94,6 +102,26 @@ export const getStoresAction = () => {
         const storesData = await response.json();
         dispatch({ type: GET_STORES, payload: storesData });
       } else console.log("error");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getSingleStoreAction = (storeId) => {
+  return async (dispatch) => {
+    const URL = process.env.REACT_APP_BE_URL;
+    const options = {
+      method: "GET",
+      headers: { authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },
+    };
+    try {
+      let response = await fetch(`${URL}/stores/${storeId}`, options);
+      if (response.ok) {
+        const storeData = await response.json();
+        console.log(storeData);
+        dispatch({ type: GET_STORE, payload: storeData });
+      }
     } catch (error) {
       console.log(error);
     }

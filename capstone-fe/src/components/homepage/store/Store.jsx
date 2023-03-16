@@ -7,16 +7,13 @@ const Store = ({ storeData }) => {
   return (
     <Col sm={3}>
       <Card>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body className="d-flex justify-content-between align-items-center">
+        <Card.Img variant="top" src={storeData.image} />
+        <Card.Body className="d-flex flex-column justify-content-between align-items-center">
           <div className="d-flex flex-column justify-content-center align-items-center">
             <Card.Title>{storeData.name}</Card.Title>
             <Card.Text>
               {""}
-              <span>
-                {storeData.owner.firstName}
-                {storeData.owner.lastName}
-              </span>
+
               <span></span>
             </Card.Text>
           </div>

@@ -1,7 +1,7 @@
 import { Col, Container, Row, Button, Modal } from "react-bootstrap";
 import "./navbar.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { searchStoresAction } from "../../../redux/actions";
 
@@ -19,7 +19,9 @@ const Navbar = () => {
   const handleCloseUser = () => setShowUser(false);
   const handleShowUser = () => setShowUser(true);
   const handleSearchStores = () => {
-    cart.map((item) => cartItems.push(item._id));
+    cart.map((item) => {
+      if (!cartItems.includes(item._id)) cartItems.push(item._id);
+    });
     console.log(cartItems);
     dispatch(searchStoresAction(cartItems));
   };
@@ -51,25 +53,25 @@ const Navbar = () => {
             sm={3}
             className="d-flex justify-content-center align-items-center"
           >
-            Option1
+            <Link to="/vegetables">Vegetables</Link>
           </Col>
           <Col
             sm={3}
             className="d-flex justify-content-center align-items-center"
           >
-            Option2
+            <Link to="/meat">Meat</Link>
           </Col>
           <Col
             sm={3}
             className="d-flex justify-content-center align-items-center"
           >
-            Option3
+            <Link to="/dairy">Dairy</Link>
           </Col>
           <Col
             sm={3}
             className="d-flex justify-content-center align-items-center"
           >
-            Option4
+            <Link to="/house-goods">House Goods</Link>
           </Col>
         </Col>
         <Col sm={1} className="d-flex justify-content-center mt-4">
