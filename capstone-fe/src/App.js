@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserRegister from "./components/register/Register";
 import Homepage from "./components/homepage/Homepage";
 import Storepage from "./components/storepage/Storepage";
+import FilteredItemsPage from "./components/filteredItemsPage/FilteredItemPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/users/login" element={<UserLogin />} />
           <Route path="/users/register" element={<UserRegister />} />
           <Route path="/stores/:storeId" element={<Storepage />} />
+          <Route path="/:itemType" element={<FilteredItemsPage />} />
         </Routes>
       </BrowserRouter>
     </div>

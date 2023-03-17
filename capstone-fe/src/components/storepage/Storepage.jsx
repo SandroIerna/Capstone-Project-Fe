@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { getSingleStoreAction } from "../../redux/actions";
 import Navbar from "../homepage/navbar/Navbar";
 import "./store.css";
 
 const Storepage = () => {
   const dispatch = useDispatch();
-
+  const location = useLocation();
+  const storeId = location.pathname.split("/")[2];
   const selectedStore = useSelector((state) => state.stores.selectedStore);
 
   useEffect(() => {
-    dispatch(getSingleStoreAction("640f96c224070139840e68c0"));
+    dispatch(getSingleStoreAction(storeId));
   }, []);
   return (
     <>

@@ -30,7 +30,7 @@ const Navbar = () => {
     <Container fluid className="navbar-container">
       <Row className="d-flex justify-content-between">
         <Col sm={2} className="d-flex justify-content-center mt-3">
-          Logo
+          <Link to="/">Logo</Link>
         </Col>
         <Col className="d-flex justify-content-center mt-3">
           <input type={"text"} id="search-bar"></input>
@@ -50,28 +50,34 @@ const Navbar = () => {
           className="mt-4 d-flex justify-content-between"
         >
           <Col
-            sm={3}
+            sm={2}
             className="d-flex justify-content-center align-items-center"
           >
-            <Link to="/vegetables">Vegetables</Link>
+            <Link to="/Vegetable">Vegetables</Link>
           </Col>
           <Col
-            sm={3}
+            sm={2}
             className="d-flex justify-content-center align-items-center"
           >
-            <Link to="/meat">Meat</Link>
+            <Link to="/Fruit">Fruits</Link>
           </Col>
           <Col
-            sm={3}
+            sm={2}
             className="d-flex justify-content-center align-items-center"
           >
-            <Link to="/dairy">Dairy</Link>
+            <Link to="/Meat">Meat</Link>
           </Col>
           <Col
-            sm={3}
+            sm={2}
             className="d-flex justify-content-center align-items-center"
           >
-            <Link to="/house-goods">House Goods</Link>
+            <Link to="/Dairy">Dairy</Link>
+          </Col>
+          <Col
+            sm={2}
+            className="d-flex justify-content-center align-items-center"
+          >
+            <Link to="/House-Goods">House Goods</Link>
           </Col>
         </Col>
         <Col sm={1} className="d-flex justify-content-center mt-4">
@@ -83,7 +89,7 @@ const Navbar = () => {
 
       <Modal show={showUser} onHide={handleCloseUser}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Login to see your user info</Modal.Title>
         </Modal.Header>
         <Modal.Body>{}</Modal.Body>
         <Modal.Footer>
@@ -97,7 +103,7 @@ const Navbar = () => {
               navigate("/users/login");
             }}
           >
-            Save Changes
+            Login
           </Button>
         </Modal.Footer>
       </Modal>
@@ -108,7 +114,10 @@ const Navbar = () => {
         </Modal.Header>
         <Modal.Body>
           <Col className="d-flex flex-column">
-            {cart &&
+            {cart.length === 0 && (
+              <span>Select something to add in the cart</span>
+            )}
+            {cart.length > 0 &&
               cart.map((item) => <span key={item._id}>{item.name}</span>)}
           </Col>
         </Modal.Body>
@@ -116,15 +125,17 @@ const Navbar = () => {
           <Button variant="secondary" onClick={handleCloseCart}>
             Close
           </Button>
-          <Button
-            variant="primary"
-            onClick={() => {
-              handleSearchStores();
-              handleCloseCart();
-            }}
-          >
-            Search Stores
-          </Button>
+          {cart.length !== 0 && (
+            <Button
+              variant="primary"
+              onClick={() => {
+                handleSearchStores();
+                handleCloseCart();
+              }}
+            >
+              Search Stores
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
     </Container>

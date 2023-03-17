@@ -42,7 +42,6 @@ const Item = ({ itemData }) => {
       setToggle(false);
       dispatch(removeFromCartAction(itemData));
     }
-    console.log("Toggle", toggle);
   };
 
   const dispatch = useDispatch();
