@@ -89,6 +89,25 @@ export const getItemsAction = () => {
   };
 };
 
+export const getFilteredItemsAction = (itemType) => {
+  return async (dispatch) => {
+    const URL = process.env.REACT_APP_BE_URL;
+    try {
+      const options = {
+        method: "GET",
+        headers: { authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },
+      };
+      let response = await fetch(`${URL}/items/type/${itemType}`, options);
+      if (response.ok) {
+        const itemsData = await response.json();
+        dispatch({ type: GET_ITEMS, payload: itemsData });
+      } else console.log("error");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const getStoresAction = () => {
   return async (dispatch) => {
     const URL = process.env.REACT_APP_BE_URL;

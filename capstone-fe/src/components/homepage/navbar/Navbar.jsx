@@ -77,7 +77,7 @@ const Navbar = () => {
             sm={2}
             className="d-flex justify-content-center align-items-center"
           >
-            <Link to="/House-Goods">House Goods</Link>
+            <Link to="/House Goods">House Goods</Link>
           </Col>
         </Col>
         <Col sm={1} className="d-flex justify-content-center mt-4">
