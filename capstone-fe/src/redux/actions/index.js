@@ -7,6 +7,9 @@ export const GET_STORES = "GET_STORES";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const UPDATE_COUNT = "UPDATE_COUNT";
 export const GET_STORE = "GET_STORE";
+export const SET_FILTER = "SET_FILTER";
+export const SET_STORES = "SET_STORES";
+export const SET_USER = "SET_USER";
 
 export const registerUserAction = (userData) => {
   return async (dispatch) => {
@@ -52,6 +55,25 @@ export const loginUserAction = (userData) => {
   };
 };
 
+export const setUserAction = (accessToken) => {
+  return async (dispatch) => {
+    const options = {
+      method: "GET",
+      headers: { authorization: `Bearer ${accessToken}` },
+    };
+    try {
+      const URL = process.env.REACT_APP_BE_URL;
+      let response = await fetch(`${URL}/users/me`, options);
+      if (response.ok) {
+        let userData = await response.json();
+        dispatch({ type: SET_USER, payload: userData });
+      } else console.log("error");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const addToCartAction = (item) => {
   return async (dispatch) => {
     dispatch({ type: ADD_TO_CART, payload: item });
@@ -89,6 +111,29 @@ export const getItemsAction = () => {
   };
 };
 
+export const searchItemsAction = (itemQuery) => {
+  return async (dispatch) => {
+    const URL = process.env.REACT_APP_BE_URL;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+      },
+      body: JSON.stringify(itemQuery),
+    };
+    try {
+      let response = await fetch(`${URL}/items/items`, options);
+      if (response.ok) {
+        const itemsData = await response.json();
+        dispatch({ type: GET_ITEMS, payload: itemsData });
+      } else console.log("error");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const getFilteredItemsAction = (itemType) => {
   return async (dispatch) => {
     const URL = process.env.REACT_APP_BE_URL;
@@ -105,6 +150,12 @@ export const getFilteredItemsAction = (itemType) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const setFilterAction = (filter) => {
+  return async (dispatch) => {
+    dispatch({ type: SET_FILTER, payload: filter });
   };
 };
 
@@ -149,7 +200,6 @@ export const getSingleStoreAction = (storeId) => {
 
 export const searchStoresAction = (cartData) => {
   return async (dispatch) => {
-    console.log("hi");
     const options = {
       method: "POST",
       headers: {
@@ -163,7 +213,7 @@ export const searchStoresAction = (cartData) => {
     let response = await fetch(`${URL}/stores/cart`, options);
     if (response.ok) {
       const stores = await response.json();
-      console.log(stores);
+      dispatch({ type: SET_STORES, payload: stores });
     }
   };
 };

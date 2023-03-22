@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { getFilteredItemsAction } from "../../redux/actions";
@@ -21,7 +21,7 @@ const FilteredItemsPage = () => {
     <>
       <Navbar />
       <Container>
-        <Row>
+        <Row className="d-flex">
           {items &&
             items.map((item) => <Item key={item._id} itemData={item} />)}
         </Row>

@@ -45,4 +45,19 @@ body {
   width: 30%;
   height: 45px;
   cursor: pointer;
+  color: rgb(119, 118, 118);
+}
+
+.login-button:hover {
+  background-color: #abd18e;
+}
+
+.back-to-home-button {
+  background-color: #b9e497;
+  border: none;
+  border-radius: 16px;
+}
+
+.back-to-home-button:hover {
+  background-color: #abd18e;
 }

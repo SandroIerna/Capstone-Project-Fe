@@ -6,11 +6,13 @@ import {
   addToCartAction,
   removeFromCartAction,
 } from "../../../redux/actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Item = ({ itemData }) => {
-  // const cart = useSelector((state) => state.cart.cart);
+  const cart = useSelector((state) => state.cart.cart);
   const [toggle, setToggle] = useState(false);
+
+  useEffect(() => isInCart(), []);
 
   // const addItemCount = (itemData) => {
   //   let index = cart.findIndex((item) => item._id === itemData._id);
@@ -34,6 +36,12 @@ const Item = ({ itemData }) => {
   //   }
   // };
 
+  const isInCart = () => {
+    cart.map((item) => {
+      if (item._id === itemData._id) setToggle(true);
+    });
+  };
+
   const handleCheck = () => {
     if (!toggle) {
       setToggle(true);
@@ -46,19 +54,51 @@ const Item = ({ itemData }) => {
 
   const dispatch = useDispatch();
   return (
-    <Col className="text-center mt-4 mb-2">
-      <Card>
-        <Card.Img
-          variant="top"
-          src={itemData.image}
-          className="item-card-image"
-        />
-        <div className="d-flex justify-content-around mt-3">
-          <input type="checkbox" onChange={() => handleCheck()} />
-          <div>{itemData.name}</div>
-        </div>
+    <Col className="text-center mt-4 mb-2" sm={2}>
+      {toggle && (
+        <Card
+          id="card"
+          className="d-flex align-items-center card-selected"
+          onClick={() => handleCheck()}
+        >
+          <Card.Img
+            variant="top"
+            src={itemData.image}
+            className="item-card-image"
+          />
+          <div className="d-flex justify-content-around mt-3">
+            <input
+              type="checkbox"
+              checked
+              onChange={() => handleCheck()}
+              className="mx-2"
+            />
+            <div>{itemData.name}</div>
+          </div>
+        </Card>
+      )}
+      {!toggle && (
+        <Card
+          className="d-flex align-items-center card"
+          onClick={() => handleCheck()}
+        >
+          <Card.Img
+            variant="top"
+            src={itemData.image}
+            className="item-card-image"
+          />
+          <div className="d-flex justify-content-around mt-3">
+            <input
+              type="checkbox"
+              onChange={() => handleCheck()}
+              className="mx-2"
+            />
+            <div>{itemData.name}</div>
+          </div>
+        </Card>
+      )}
 
-        {/* <div className="mt-4">
+      {/* <div className="mt-4">
           <Button
             className="item-button mx-3"
             onClick={() => {
@@ -77,7 +117,6 @@ const Item = ({ itemData }) => {
             +
           </Button>
         </div> */}
-      </Card>
     </Col>
   );
 };

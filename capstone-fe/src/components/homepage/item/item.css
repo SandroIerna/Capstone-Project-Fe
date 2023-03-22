@@ -4,5 +4,23 @@
 }
 
 .item-card-image {
-  height: 200px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.card {
+  border: solid 1px;
+  border-radius: 25px;
+  border-color: #e1efeb;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: rgba(184, 228, 151, 0.5);
+}
+
+.card-selected {
+  background-color: rgba(184, 228, 151, 0.5);
+  transform: scale(1.1);
 }

@@ -37,7 +37,13 @@ const UserRegister = () => {
   };
   return (
     <Container fluid>
-      <Button onClick={() => navigate("/")}>Back To Home</Button>
+      <Button
+        onClick={() => navigate("/")}
+        className="d-flex align-items-center mt-3 back-to-home-button"
+      >
+        <img src="/undo.svg" alt="arrow back" />
+        <span className="ml-1">Back to Home</span>
+      </Button>
       {}
       <Row>
         <Col sm={7} id="loginCard">
@@ -118,6 +124,7 @@ const UserRegister = () => {
                   onClick={() => {
                     handleShowPassword();
                   }}
+                  className="login-button"
                 >
                   Show Password
                 </Button>
@@ -134,7 +141,7 @@ const UserRegister = () => {
             <Col sm={2}></Col>
           </Row>
         </Col>
-        <Col sm={5}></Col>
+        <Col sm={5} className="image-placeholder"></Col>
       </Row>
     </Container>
   );

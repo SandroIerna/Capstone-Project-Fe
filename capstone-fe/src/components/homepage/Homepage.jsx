@@ -9,6 +9,7 @@ import Navbar from "./navbar/Navbar";
 import Store from "./store/Store";
 import { Container, Row, Button } from "react-bootstrap";
 import Item from "./item/Item";
+import Footer from "../footer/Footer";
 
 const Homepage = () => {
   const dispatch = useDispatch();
@@ -19,9 +20,10 @@ const Homepage = () => {
     dispatch(getStoresAction());
     dispatch(getItemsAction());
   }, []);
+
   return (
-    <>
-      <Navbar></Navbar>
+    <div className="d-flex flex-column align-content-between">
+      <Navbar homepage={true} />
       <Container>
         <Row>
           {items &&
@@ -33,7 +35,8 @@ const Homepage = () => {
         </Row>
         <Row className="d-flex justify-content-center"></Row>
       </Container>
-    </>
+      {/* <Footer /> */}
+    </div>
   );
 };
 export default Homepage;

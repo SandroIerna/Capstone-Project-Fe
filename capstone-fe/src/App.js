@@ -6,6 +6,7 @@ import UserRegister from "./components/register/Register";
 import Homepage from "./components/homepage/Homepage";
 import Storepage from "./components/storepage/Storepage";
 import FilteredItemsPage from "./components/filteredItemsPage/FilteredItemPage";
+import ProfilePage from "./components/profilePage/ProfilePage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/users/register" element={<UserRegister />} />
           <Route path="/stores/:storeId" element={<Storepage />} />
           <Route path="/:itemType" element={<FilteredItemsPage />} />
+          <Route path="/profile-page/:userId" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
     </div>

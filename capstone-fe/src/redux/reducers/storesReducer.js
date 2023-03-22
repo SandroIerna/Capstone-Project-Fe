@@ -1,4 +1,4 @@
-import { GET_STORE, GET_STORES } from "../actions";
+import { GET_STORE, GET_STORES, SET_STORES } from "../actions";
 
 const initialState = {};
 
@@ -6,8 +6,13 @@ const storesReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_STORES:
       return { ...state, stores: action.payload };
+
+    case SET_STORES:
+      return { ...state, stores: action.payload };
+
     case GET_STORE:
       return { ...state, selectedStore: action.payload };
+
     default:
       return state;
   }

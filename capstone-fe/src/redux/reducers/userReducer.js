@@ -1,6 +1,6 @@
-import { LOGIN_USER, REGISTER_USER } from "../actions";
+import { LOGIN_USER, REGISTER_USER, SET_USER } from "../actions";
 
-const initialState = { accessToken: "" };
+const initialState = {};
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,6 +11,8 @@ const userReducer = (state = initialState, action) => {
         ...state,
         accessToken: action.payload,
       };
+    case SET_USER:
+      return { ...state, user: action.payload };
     default:
       return state;
   }

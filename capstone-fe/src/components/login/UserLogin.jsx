@@ -84,6 +84,7 @@ const UserLogin = () => {
                   className="login-button"
                   onClick={() => {
                     handleLogin();
+                    navigate("/");
                   }}
                 >
                   Login

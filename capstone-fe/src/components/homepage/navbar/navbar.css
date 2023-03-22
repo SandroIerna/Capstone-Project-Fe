@@ -29,6 +29,15 @@
   cursor: pointer;
 }
 
+#cart-button {
+  background-color: #b9e497;
+  width: 50%;
+  border: none;
+  border-radius: 16px;
+  color: black;
+  cursor: pointer;
+}
+
 #navigation {
   height: 40px;
   border-radius: 16px;
@@ -38,4 +47,8 @@
 #cart-button {
   height: 40px;
   width: 100%;
+}
+
+.link {
+  color: black;
 }
