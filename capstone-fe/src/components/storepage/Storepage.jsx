@@ -17,6 +17,7 @@ const Storepage = () => {
   useEffect(() => {
     dispatch(getSingleStoreAction(storeId));
   }, []);
+  console.log(process.env.REACT_APP_GOOGLE_KEY);
 
   //   // *@param  {H.Map} map
   //   // */
@@ -56,7 +57,7 @@ const Storepage = () => {
           <Row className="justify-content-between">
             <iframe
               className="map"
-              src={`https://www.google.com/maps/embed/v1/place?q=${selectedStore.location.latitude},${selectedStore.location.longitude}&key=AIzaSyDsT6k6lw6-k6l4QuLT23PsHZmy1A7iYl0`}
+              src={`https://www.google.com/maps/embed/v1/place?q=${selectedStore.location.latitude},${selectedStore.location.longitude}&key=${process.env.REACT_APP_GOOGLE_KEY}`}
             ></iframe>
             <div>
               <img src={selectedStore.image} id="store-img" alt="store-logo" />
