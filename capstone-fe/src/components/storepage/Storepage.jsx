@@ -3,8 +3,10 @@ import { Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { getSingleStoreAction } from "../../redux/actions";
+import { Button, Col, Card } from "react-bootstrap";
 import Navbar from "../homepage/navbar/Navbar";
 import "./store.css";
+import Footer from "../footer/Footer";
 
 const Storepage = () => {
   const dispatch = useDispatch();
@@ -50,20 +52,30 @@ const Storepage = () => {
     <>
       <Navbar />
       {selectedStore && (
-        <Container>
-          <Row>
+        <Container className="mt-5">
+          <Row className="justify-content-between">
+            <iframe
+              className="map"
+              src={`https://www.google.com/maps/embed/v1/place?q=${selectedStore.location.latitude},${selectedStore.location.longitude}&key=AIzaSyDsT6k6lw6-k6l4QuLT23PsHZmy1A7iYl0`}
+            ></iframe>
             <div>
-              <img src={selectedStore.image} alt="The store image" />
+              <img src={selectedStore.image} id="store-img" alt="store-logo" />
+              <h3>{selectedStore.name}</h3>
             </div>
-            <div className="d-flex flex-column">
+            <div className="d-flex justify-content-around mt-3">
+              <div></div>
+            </div>
+            <div></div>
+            {/* <div className="d-flex flex-column">
               <h1>"{selectedStore.name}"</h1>
               <span>Store info</span>
               <span>Latitude {selectedStore.location.latitude}</span>
               <span>Longitude {selectedStore.location.longitude}</span>
-            </div>
+            </div> */}
           </Row>
         </Container>
       )}
+      <Footer></Footer>
     </>
   );
 };

@@ -28,7 +28,13 @@ const UserLogin = () => {
   return (
     <Container fluid>
       {}
-      <Button onClick={() => navigate("/")}>Back To Home</Button>
+      <Button
+        onClick={() => navigate("/")}
+        className="d-flex align-items-center mt-3 back-to-home-button"
+      >
+        <img src="/undo.svg" alt="arrow back" />
+        <span className="ml-1">Back to Home</span>
+      </Button>
       <Row>
         <Col sm={7} id="loginCard">
           <Row className="d-flex">
@@ -46,7 +52,7 @@ const UserLogin = () => {
               </Row>
 
               <Row className="input-fields mt-5">
-                <div className="input-field mt-5">
+                <div className="input-field-container mt-5">
                   <input
                     type={"text"}
                     placeholder="Email"
@@ -56,7 +62,23 @@ const UserLogin = () => {
                     }}
                   ></input>
                 </div>
-                <div className="input-field mt-5 mb-5">
+                <div className="input-field-container mt-5 mb-5 d-flex align-items-center">
+                  {showPassword === "text" && (
+                    <img
+                      src="/view.svg"
+                      onClick={() => handleShowPassword()}
+                      alt="open eye"
+                      className="ml-3"
+                    ></img>
+                  )}
+                  {showPassword === "password" && (
+                    <img
+                      src="/hide.svg"
+                      onClick={() => handleShowPassword()}
+                      alt="closed eye"
+                      className="ml-3"
+                    ></img>
+                  )}
                   <input
                     type={showPassword}
                     placeholder="Password"
@@ -73,13 +95,7 @@ const UserLogin = () => {
                     <u>Forgot password?</u>
                   </span>
                 </div>
-                <Button
-                  onClick={() => {
-                    handleShowPassword();
-                  }}
-                >
-                  Show psw
-                </Button>
+
                 <Button
                   className="login-button"
                   onClick={() => {

@@ -10,6 +10,13 @@ export const GET_STORE = "GET_STORE";
 export const SET_FILTER = "SET_FILTER";
 export const SET_STORES = "SET_STORES";
 export const SET_USER = "SET_USER";
+export const SET_SHOW = "SET_SHOW";
+
+export const setShowAction = (boolean) => {
+  return async (dispatch) => {
+    dispatch({ type: SET_SHOW, payload: boolean });
+  };
+};
 
 export const registerUserAction = (userData) => {
   return async (dispatch) => {

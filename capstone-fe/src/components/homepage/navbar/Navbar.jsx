@@ -7,6 +7,7 @@ import {
   searchItemsAction,
   searchStoresAction,
   setFilterAction,
+  setShowAction,
   setUserAction,
 } from "../../../redux/actions";
 
@@ -219,10 +220,11 @@ const Navbar = ({ homepage }) => {
           </Button>
           {cart.length !== 0 && (
             <Button
-              variant="primary"
+              className="cart-modal-button"
               onClick={() => {
                 handleSearchStores();
                 handleCloseCart();
+                dispatch(setShowAction(true));
               }}
             >
               Search Stores

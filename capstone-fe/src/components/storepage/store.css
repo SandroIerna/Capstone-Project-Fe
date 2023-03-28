@@ -1,0 +1,13 @@
+.map {
+  height: 500px;
+  width: 500px;
+  border: none;
+  border-radius: 16px;
+}
+
+#store-img {
+  height: 200px;
+  width: 500px;
+  border: none;
+  border-radius: 16px;
+}

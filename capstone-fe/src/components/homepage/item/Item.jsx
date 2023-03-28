@@ -54,7 +54,7 @@ const Item = ({ itemData }) => {
 
   const dispatch = useDispatch();
   return (
-    <Col className="text-center mt-4 mb-2" sm={2}>
+    <Col className="text-center mt-4 mb-2 mx-3" sm={2}>
       {toggle && (
         <Card
           id="card"

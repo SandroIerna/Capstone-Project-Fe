@@ -64,7 +64,7 @@ const UserRegister = () => {
               <Row className="input-fields mt-5">
                 <Row className="d-flex justify-content-between">
                   <Col sm={6}>
-                    <div className="input-field">
+                    <div className="input-field-container">
                       <input
                         type={"text"}
                         placeholder="First Name"
@@ -76,7 +76,7 @@ const UserRegister = () => {
                     </div>
                   </Col>
                   <Col sm={6}>
-                    <div className="input-field">
+                    <div className="input-field-container ">
                       <input
                         type={"text"}
                         placeholder="Last Name"
@@ -92,13 +92,29 @@ const UserRegister = () => {
                   <input
                     type={"text"}
                     placeholder="Email"
-                    className="input-field"
+                    className="input-field-container "
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
                   ></input>
                 </div>
-                <div className="input-field mt-3">
+                <div className="input-field-container d-flex align-items-center mt-3">
+                  {showPassword === "text" && (
+                    <img
+                      src="/view.svg"
+                      onClick={() => handleShowPassword()}
+                      alt="open eye"
+                      className="ml-3"
+                    ></img>
+                  )}
+                  {showPassword === "password" && (
+                    <img
+                      src="/hide.svg"
+                      onClick={() => handleShowPassword()}
+                      alt="closed eye"
+                      className="ml-3"
+                    ></img>
+                  )}
                   <input
                     type={showPassword}
                     placeholder="Password"
@@ -108,7 +124,7 @@ const UserRegister = () => {
                     }}
                   ></input>
                 </div>
-                <div className="input-field mt-3">
+                <div className="input-field-container  mt-3">
                   <input
                     type={"password"}
                     placeholder="Confirm Password"

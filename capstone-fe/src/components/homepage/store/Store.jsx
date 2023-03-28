@@ -1,9 +1,12 @@
 import "./store.css";
 import { Button, Col, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getSingleStoreAction } from "../../../redux/actions";
 
 const Store = ({ storeData }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <Col sm={3}>
       <Card>
@@ -20,6 +23,7 @@ const Store = ({ storeData }) => {
           <Button
             variant="primary"
             onClick={() => {
+              dispatch(getSingleStoreAction(storeData._id));
               navigate(`/stores/${storeData._id}`);
             }}
           >

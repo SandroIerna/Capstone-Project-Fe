@@ -52,3 +52,15 @@
 .link {
   color: black;
 }
+
+.cart-modal-button {
+  background-color: #b9e497;
+  border: none;
+  color: black;
+  border-radius: 16px;
+}
+
+.cart-modal-button:hover {
+  background-color: #abd18e;
+  color: rgb(68, 66, 66);
+}
