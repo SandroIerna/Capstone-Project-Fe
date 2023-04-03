@@ -110,7 +110,9 @@ const UserLogin = () => {
             <Col sm={2}></Col>
           </Row>
         </Col>
-        <Col sm={5}></Col>
+        <Col sm={5}>
+          <img src="/Grocery_Login.png" id="login-img"></img>
+        </Col>
       </Row>
     </Container>
   );

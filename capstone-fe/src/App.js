@@ -7,6 +7,7 @@ import Homepage from "./components/homepage/Homepage";
 import Storepage from "./components/storepage/Storepage";
 import FilteredItemsPage from "./components/filteredItemsPage/FilteredItemPage";
 import ProfilePage from "./components/profilePage/ProfilePage";
+import ProductPage from "./components/productpage/ProductPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/stores/:storeId" element={<Storepage />} />
           <Route path="/:itemType" element={<FilteredItemsPage />} />
           <Route path="/profile-page/:userId" element={<ProfilePage />} />
+          <Route path="/product-page/:productId" element={<ProductPage />} />
         </Routes>
       </BrowserRouter>
     </div>

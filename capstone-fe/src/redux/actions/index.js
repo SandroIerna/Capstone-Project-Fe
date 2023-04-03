@@ -99,13 +99,13 @@ export const updateCountAction = (item) => {
   };
 };
 
-export const getItemsAction = () => {
+export const getItemsAction = (accessToken) => {
   return async (dispatch) => {
     const URL = process.env.REACT_APP_BE_URL;
     try {
       const options = {
         method: "GET",
-        headers: { authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },
+        headers: { authorization: `Bearer ${accessToken}` },
       };
       let response = await fetch(`${URL}/items`, options);
       if (response.ok) {
@@ -118,14 +118,14 @@ export const getItemsAction = () => {
   };
 };
 
-export const searchItemsAction = (itemQuery) => {
+export const searchItemsAction = (itemQuery, accessToken) => {
   return async (dispatch) => {
     const URL = process.env.REACT_APP_BE_URL;
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify(itemQuery),
     };
@@ -141,13 +141,13 @@ export const searchItemsAction = (itemQuery) => {
   };
 };
 
-export const getFilteredItemsAction = (itemType) => {
+export const getFilteredItemsAction = (itemType, accessToken) => {
   return async (dispatch) => {
     const URL = process.env.REACT_APP_BE_URL;
     try {
       const options = {
         method: "GET",
-        headers: { authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },
+        headers: { authorization: `Bearer ${accessToken}` },
       };
       let response = await fetch(`${URL}/items/type/${itemType}`, options);
       if (response.ok) {
@@ -166,13 +166,13 @@ export const setFilterAction = (filter) => {
   };
 };
 
-export const getStoresAction = () => {
+export const getStoresAction = (accessToken) => {
   return async (dispatch) => {
     const URL = process.env.REACT_APP_BE_URL;
     try {
       const options = {
         method: "GET",
-        headers: { authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },
+        headers: { authorization: `Bearer ${accessToken}` },
       };
       let response = await fetch(`${URL}/stores`, options);
       if (response.ok) {
@@ -185,12 +185,12 @@ export const getStoresAction = () => {
   };
 };
 
-export const getSingleStoreAction = (storeId) => {
+export const getSingleStoreAction = (storeId, accessToken) => {
   return async (dispatch) => {
     const URL = process.env.REACT_APP_BE_URL;
     const options = {
       method: "GET",
-      headers: { authorization: `Bearer ${process.env.REACT_APP_TOKEN}` },
+      headers: { authorization: `Bearer ${accessToken}` },
     };
     try {
       let response = await fetch(`${URL}/stores/${storeId}`, options);
@@ -205,13 +205,13 @@ export const getSingleStoreAction = (storeId) => {
   };
 };
 
-export const searchStoresAction = (cartData) => {
+export const searchStoresAction = (cartData, accessToken) => {
   return async (dispatch) => {
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify(cartData),
     };

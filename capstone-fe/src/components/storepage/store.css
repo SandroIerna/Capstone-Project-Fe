@@ -1,13 +1,14 @@
 .map {
-  height: 500px;
-  width: 500px;
+  width: 100%;
+  aspect-ratio: 1/1;
   border: none;
   border-radius: 16px;
 }
 
 #store-img {
   height: 200px;
-  width: 500px;
+  object-fit: cover;
+  width: 100%;
   border: none;
   border-radius: 16px;
 }

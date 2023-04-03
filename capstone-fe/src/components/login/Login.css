@@ -78,3 +78,8 @@ body {
 .back-to-home-button:hover {
   background-color: #abd18e;
 }
+
+#login-img {
+  height: 800px;
+  width: 500px;
+}

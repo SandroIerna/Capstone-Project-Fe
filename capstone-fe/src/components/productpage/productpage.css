@@ -1,0 +1,15 @@
+.product-img {
+  height: 500px;
+  width: 500px;
+  border-radius: 50px;
+  box-shadow: 0px 5px 5px 0px rgba(121, 121, 121, 0.75);
+}
+.store-cards {
+  height: 100px;
+}
+
+.carousel-images {
+  height: 280px;
+  width: 480px;
+  object-fit: cover;
+}

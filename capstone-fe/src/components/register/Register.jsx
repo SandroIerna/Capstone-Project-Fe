@@ -157,7 +157,10 @@ const UserRegister = () => {
             <Col sm={2}></Col>
           </Row>
         </Col>
-        <Col sm={5} className="image-placeholder"></Col>
+        <Col sm={5} className="image-placeholder">
+          {" "}
+          <img src="/Grocery_Login.png" id="login-img"></img>
+        </Col>
       </Row>
     </Container>
   );

@@ -7,12 +7,17 @@ import {
   removeFromCartAction,
 } from "../../../redux/actions";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Item = ({ itemData }) => {
   const cart = useSelector((state) => state.cart.cart);
   const [toggle, setToggle] = useState(false);
+  const [flipCard, setFlipCard] = useState("");
 
+  useEffect(() => isInCart(), [cart]);
   useEffect(() => isInCart(), []);
+
+  const navigate = useNavigate();
 
   // const addItemCount = (itemData) => {
   //   let index = cart.findIndex((item) => item._id === itemData._id);
@@ -35,11 +40,19 @@ const Item = ({ itemData }) => {
   //     }
   //   }
   // };
-
+  const checkCart = (id) => cart.find((item) => item._id === id);
   const isInCart = () => {
-    cart.map((item) => {
-      if (item._id === itemData._id) setToggle(true);
-    });
+    if (checkCart(itemData._id)) setToggle(true);
+    else {
+      setToggle(false);
+    }
+  };
+
+  const handleFlip = () => {
+    if (flipCard === "") setFlipCard("flip-card-inner-rotate");
+    else {
+      setFlipCard("");
+    }
   };
 
   const handleCheck = () => {
@@ -54,49 +67,169 @@ const Item = ({ itemData }) => {
 
   const dispatch = useDispatch();
   return (
-    <Col className="text-center mt-4 mb-2 mx-3" sm={2}>
+    <Col className="text-center mt-3 mx-3" sm={2}>
       {toggle && (
-        <Card
-          id="card"
-          className="d-flex align-items-center card-selected"
-          onClick={() => handleCheck()}
-        >
-          <Card.Img
-            variant="top"
-            src={itemData.image}
-            className="item-card-image"
-          />
-          <div className="d-flex justify-content-around mt-3">
-            <input
-              type="checkbox"
-              checked
-              onChange={() => handleCheck()}
-              className="mx-2"
-            />
-            <div>{itemData.name}</div>
+        <div className="flip-card">
+          <div className={flipCard + " flip-card-inner"}>
+            <Card className="d-flex align-items-center  card-selected  flip-card-front">
+              <div className="item-card-top">
+                <Card.Img
+                  variant="top"
+                  src={itemData.image}
+                  className="item-card-image"
+                  onClick={() => handleCheck()}
+                />
+                <div>
+                  <div className="d-flex justify-content-around my-2">
+                    <input
+                      type="checkbox"
+                      checked
+                      onChange={() => handleCheck()}
+                      className="mx-2"
+                    />
+                    <div>
+                      <span>{itemData.name}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="item-card-bottom">
+                  <Button
+                    className="more-info-button mb-2"
+                    onClick={() => {
+                      handleFlip();
+                    }}
+                  >
+                    <span className="mr-2">More info</span>
+                    <img src="/search-zoom-in.png" />
+                  </Button>
+                </div>
+              </div>
+            </Card>
+            <div className="flip-card-back">
+              <img
+                src="/undo.svg"
+                className="undo-card-info"
+                onClick={() => {
+                  handleFlip();
+                }}
+              />
+            </div>
           </div>
-        </Card>
+        </div>
       )}
       {!toggle && (
-        <Card
-          className="d-flex align-items-center card"
-          onClick={() => handleCheck()}
-        >
-          <Card.Img
-            variant="top"
-            src={itemData.image}
-            className="item-card-image"
-          />
-          <div className="d-flex justify-content-around mt-3">
-            <input
-              type="checkbox"
-              onChange={() => handleCheck()}
-              className="mx-2"
-            />
-            <div>{itemData.name}</div>
+        <div className="flip-card">
+          <div className={flipCard + " flip-card-inner"}>
+            <Card className="d-flex align-items-center card  flip-card-front item-card">
+              <div className="item-card-top">
+                <Card.Img
+                  variant="top"
+                  src={itemData.image}
+                  className="item-card-image"
+                  onClick={() => handleCheck()}
+                />
+                <div>
+                  <div className="d-flex justify-content-around my-2">
+                    <input
+                      type="checkbox"
+                      onChange={() => handleCheck()}
+                      className="mx-2"
+                    />
+                    <div>
+                      <span>{itemData.name}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="item-card-bottom">
+                  <Button
+                    className="more-info-button mb-2"
+                    onClick={() => {
+                      handleFlip();
+                    }}
+                  >
+                    <span className="mr-2">More info</span>
+                    <img src="/search-zoom-in.png" />
+                  </Button>
+                </div>
+              </div>
+            </Card>
+            <div className="flip-card-back">
+              <div className="mt-3">
+                <h6 className="px-2">Brand: {itemData.brand}</h6>
+                {itemData.information && (
+                  <>
+                    <p className="informations px-2">
+                      Calories: {itemData.information.calories}
+                    </p>
+                    <p className="informations px-2">
+                      Proteins: {itemData.information.proteins}
+                    </p>
+                    <p className="informations px-2">
+                      Carbs: {itemData.information.carbs}
+                    </p>
+                  </>
+                )}
+                <div>
+                  <Button
+                    className="more-info-button mb-2"
+                    onClick={() => {
+                      navigate(`/product-page/${itemData._id}`);
+                    }}
+                  >
+                    <span className="mr-2 check-product-page-button">
+                      Check Product page
+                    </span>
+                    {/* <img src="/search-zoom-in.png" /> */}
+                  </Button>
+                </div>
+                <img
+                  src="/undo.svg"
+                  className="undo-card-info"
+                  onClick={() => {
+                    handleFlip();
+                  }}
+                />
+              </div>
+            </div>
           </div>
-        </Card>
+        </div>
       )}
+
+      {/* {toggle && (
+        <div className="flip-card">
+          <div className={flipCard + "flip-card-inner"}>
+            <Card className="d-flex align-items-center card-selected flip-card-front item-card">
+              <Card.Img
+                variant="top"
+                src={itemData.image}
+                className="item-card-image"
+                onClick={() => handleCheck()}
+              />
+              <div>
+                <div className="d-flex justify-content-around my-2">
+                  <input
+                    type="checkbox"
+                    checked
+                    onChange={() => handleCheck()}
+                    className="mx-2"
+                  />
+                  <div>{itemData.name}</div>
+                </div>
+              </div>
+
+              <div className="flip-card-back">
+                <Button
+                  onClick={() => {
+                    handleFlip();
+                  }}
+                >
+                  Back
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </div>
+      )} */}
 
       {/* <div className="mt-4">
           <Button

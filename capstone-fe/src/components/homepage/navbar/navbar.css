@@ -1,56 +1,66 @@
 .navbar-container {
-  background-color: #e1efeb;
-  height: 140px;
+  background-color: #e6efeb;
+  height: 100px;
 }
 
 #search-bar {
-  height: 40px;
+  height: 55px;
   width: 50%;
   border: none;
-  border-radius: 16px 0px 0px 16px;
+  border-radius: 50px 0px 0px 50px;
 }
 
 #search-button {
   border: none;
   width: 15%;
-  border-radius: 0px 16px 16px 0px;
-  background-color: #b9e497;
+  border-radius: 0px 50px 50px 0px;
+  background-color: #444b3b;
   text-align: center;
-  color: black;
+  color: white;
 }
 
-#user-button {
-  background-color: #b9e497;
-  width: 50%;
+#input-group-dropdown-2 {
+  background-color: black;
+  width: 133px;
+  height: 55px;
   border: none;
-  border-radius: 16px;
+  border-radius: 50px;
   text-align: center;
-  color: black;
+  color: white;
   cursor: pointer;
 }
 
 #cart-button {
-  background-color: #b9e497;
-  width: 50%;
+  background-color: #c8e1a6;
+  height: 55px !important;
+  width: 77px !important;
   border: none;
-  border-radius: 16px;
+  border-radius: 50px;
   color: black;
   cursor: pointer;
 }
 
 #navigation {
-  height: 40px;
-  border-radius: 16px;
-  background-color: #b9e497;
+  height: 55px;
+  border-radius: 50px;
+  background-color: #c8e1a6;
+  box-shadow: 0px 5px 5px 0px rgba(121, 121, 121, 0.75);
 }
 
 #cart-button {
   height: 40px;
   width: 100%;
+  position: fixed;
+  box-shadow: 0px 5px 5px 0px rgba(121, 121, 121, 0.75);
 }
 
 .link {
+  color: #7b7b7b;
+}
+
+.selected {
   color: black;
+  font-size: larger;
 }
 
 .cart-modal-button {
@@ -63,4 +73,31 @@
 .cart-modal-button:hover {
   background-color: #abd18e;
   color: rgb(68, 66, 66);
+}
+
+#logo-img {
+  height: 55px;
+  width: 55px;
+}
+
+#logo-title {
+  color: #444b3b;
+  text-decoration: none !important;
+}
+
+#logo-title:hover {
+  text-decoration: none !important;
+}
+
+.logo-link {
+  text-decoration: none !important;
+  cursor: pointer;
+}
+/* .item-type {
+  border-right: solid 2px !important;
+  border-color: #7b7b7b !important;
+} */
+
+.store-container {
+  background-color: #678054;
 }

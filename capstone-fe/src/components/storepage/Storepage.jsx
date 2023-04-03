@@ -7,17 +7,19 @@ import { Button, Col, Card } from "react-bootstrap";
 import Navbar from "../homepage/navbar/Navbar";
 import "./store.css";
 import Footer from "../footer/Footer";
+import Store from "../homepage/store/Store";
 
 const Storepage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const storeId = location.pathname.split("/")[2];
   const selectedStore = useSelector((state) => state.stores.selectedStore);
+  const accessToken = useSelector((state) => state.user.accessToken);
+  const stores = useSelector((state) => state.stores.stores);
 
   useEffect(() => {
-    dispatch(getSingleStoreAction(storeId));
+    dispatch(getSingleStoreAction(storeId, accessToken.accessToken));
   }, []);
-  console.log(process.env.REACT_APP_GOOGLE_KEY);
 
   //   // *@param  {H.Map} map
   //   // */
@@ -53,20 +55,43 @@ const Storepage = () => {
     <>
       <Navbar />
       {selectedStore && (
-        <Container className="mt-5">
-          <Row className="justify-content-between">
-            <iframe
-              className="map"
-              src={`https://www.google.com/maps/embed/v1/place?q=${selectedStore.location.latitude},${selectedStore.location.longitude}&key=${process.env.REACT_APP_GOOGLE_KEY}`}
-            ></iframe>
-            <div>
-              <img src={selectedStore.image} id="store-img" alt="store-logo" />
-              <h3>{selectedStore.name}</h3>
-            </div>
-            <div className="d-flex justify-content-around mt-3">
-              <div></div>
-            </div>
-            <div></div>
+        <Container fluid className="mt-5">
+          <Row className="justify-content-center">
+            <Col sm={5}>
+              <iframe
+                className="map"
+                src={`https://www.google.com/maps/embed/v1/place?q=${selectedStore.location.latitude},${selectedStore.location.longitude}&key=${process.env.REACT_APP_GOOGLE_KEY}`}
+              ></iframe>
+            </Col>
+
+            <Col sm={5}>
+              <img src={selectedStore.banner} id="store-img" alt="store-logo" />
+              <h3 className="mt-3">{selectedStore.name}</h3>
+
+              <div className="mt-3">
+                <div>
+                  <span>Rating:</span>
+                </div>
+                <div>
+                  <span>Open: Closes at 21:00</span>
+                </div>
+                <div>
+                  <span>Address:</span>
+                </div>
+                <div>
+                  <span>{selectedStore.description}</span>
+                </div>
+              </div>
+              <Row>
+                {stores &&
+                  stores.map((store) => {
+                    if (store._id !== selectedStore._id) {
+                      console.log(store);
+                      return <Store key={store._id} storeData={store} />;
+                    }
+                  })}
+              </Row>
+            </Col>
             {/* <div className="d-flex flex-column">
               <h1>"{selectedStore.name}"</h1>
               <span>Store info</span>
